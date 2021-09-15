@@ -19,7 +19,8 @@ use App\Models\User;
 
 Route::get('/', function () {
     return view('home', [
-        "title" => "Home"
+        "title" => "Home",
+        'active' => 'home'
     ]);
 });
 
@@ -27,7 +28,8 @@ Route::get('/about', function () {
     return view('about', [
         "name" => "Miftah Apriliandi",
         "email" => "miftahapriliandi@gmail.com",
-        "title" => "About"
+        "title" => "About",
+        "active" => 'about'
     ]);
 });
 
@@ -41,6 +43,7 @@ Route::get('/categories', function () {
         'categories',
         [
             'title' => 'Post Categories',
+            'active' => 'categories',
             'categories' => Category::all()
         ]
     );
@@ -51,6 +54,7 @@ Route::get('/categories/{category:slug}', function (Category $category) {
         'posts',
         [
             'title' => "Post by Category : $category->name",
+            'active' => 'categories',
             'posts' => $category->posts,
         ]
     );
